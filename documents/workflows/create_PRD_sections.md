@@ -1,3 +1,7 @@
+Create a PRD out of the assocuared requirements. 
+
+Create it in a downloadable markdown format in a single file in /poc
+
 # Product Requirements Document (PRD) Template
 
 ## Instructions for Creating PRD Sections

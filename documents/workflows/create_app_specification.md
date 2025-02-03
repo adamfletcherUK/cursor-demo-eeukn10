@@ -71,28 +71,10 @@
 3. **Milestone 3**: 
    - Expected Deliverable: 
 
-# 6. Risk Assessment & Constraints
-
-### Potential Risks
-1. **Risk 1**: 
-   - Mitigation Strategy:
-
-2. **Risk 2**: 
-   - Mitigation Strategy:
-
-### Constraints
-[Technical constraints, regulatory/compliance constraints, etc.]
-
-# 7. Success Criteria & Measurement
-
-### Key Performance Indicators (KPIs)
-1. KPI 1
-2. KPI 2
-
 ### Goals for Proof of Concept
 [How you will decide if the PoC was successful]
 
-# 8. Conversation Flow Guidelines
+# 6. Conversation Flow Guidelines
 
 ### Greeting and Objective Check
 - Confirm understanding of the PoC development process
