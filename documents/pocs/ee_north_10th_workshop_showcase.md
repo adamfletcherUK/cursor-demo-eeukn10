@@ -1,6 +1,6 @@
 # EE North 10th Anniversary Workshop Showcase
 
-# 2. Project Overview
+# 1. Project Overview
 
 ### Project Name
 EE North 10th Anniversary Workshop Showcase
@@ -22,7 +22,7 @@ To provide a clear, comprehensive overview of all workshops available during the
 - Workshop facilitators and organizers
 - EE North community members
 
-# 3. Key Features & Functionality
+# 2. Key Features & Functionality
 
 ### Feature 1: Workshop Grid Layout
 - Responsive grid of workshop cards
@@ -58,7 +58,7 @@ To provide a clear, comprehensive overview of all workshops available during the
 - Success confirmation with direct link to created workshop
 - Edit capability for workshop creators
 
-# 4. Technical Approach
+# 3. Technical Approach
 
 ### Technology Stack
 - **Front-end**: React with TypeScript
@@ -66,56 +66,90 @@ To provide a clear, comprehensive overview of all workshops available during the
 - **Database**: SQLite (for simplicity in PoC phase)
 
 ### High-Level Architecture
-Simple single-page application (SPA):
-- Static React frontend
-- Minimal API endpoints for workshop data, registration, and creation
-- Single database table for workshop information
-- Registration management system
+```mermaid
+graph TD
+    A[React Frontend] --> B[FastAPI Backend]
+    B --> C[SQLite Database]
+    B --> D[Workshop Management]
+    B --> E[Registration System]
+    D --> C
+    E --> C
+```
 
 ### Data Model
 1. Workshops
-   - ID
-   - Title
-   - Description
-   - Facilitator name
-   - Start time
-   - Duration
-   - Location
-   - Maximum capacity
-   - Current registration count
-   - Waitlist enabled (boolean)
-   - Created at
-   - Last modified
-   - Creator ID
+```json
+{
+  "id": "uuid",
+  "title": "string",
+  "description": "string",
+  "facilitator_name": "string",
+  "start_time": "datetime",
+  "duration": "integer",
+  "location": "string",
+  "max_capacity": "integer",
+  "current_registrations": "integer",
+  "waitlist_enabled": "boolean",
+  "created_at": "datetime",
+  "modified_at": "datetime",
+  "creator_id": "uuid"
+}
+```
 
 2. Registrations
-   - ID
-   - Workshop ID
-   - Registration timestamp
-   - Status (confirmed/waitlisted/cancelled)
-   - Confirmation code
+```json
+{
+  "id": "uuid",
+  "workshop_id": "uuid",
+  "timestamp": "datetime",
+  "status": "enum(confirmed, waitlisted, cancelled)",
+  "confirmation_code": "string"
+}
+```
 
-# 5. Implementation Plan
+### API Endpoints
+```
+GET /api/workshops - List all workshops
+POST /api/workshops - Create new workshop
+GET /api/workshops/{id} - Get workshop details
+PUT /api/workshops/{id} - Update workshop
+DELETE /api/workshops/{id} - Delete workshop
+
+POST /api/workshops/{id}/register - Register for workshop
+DELETE /api/workshops/{id}/register - Cancel registration
+GET /api/workshops/{id}/registrations - List registrations
+```
+
+# 4. Implementation Plan
 
 ### Milestones
-1. **Basic Layout & Data Structure**: 
-   - Set up project structure
-   - Implement basic grid layout
-   - Create workshop data schema
+1. **Project Setup & Basic Structure** (Week 1)
+   - Expected Deliverable: Project scaffolding, basic routing, and database setup
+   - Set up React and FastAPI projects
+   - Configure TypeScript and development environment
+   - Create initial database schema
+   - Set up basic API structure
 
-2. **Core Functionality**:
-   - Workshop card component
-   - Workshop creation form
-   - Image upload integration
-   - Filtering system
-   - Responsive design
+2. **Core Workshop Features** (Week 2)
+   - Expected Deliverable: Workshop management functionality
+   - Implement workshop creation form
+   - Build workshop card component
+   - Create workshop grid layout
+   - Add workshop editing capability
 
-### Constraints
+3. **Registration System** (Week 3)
+   - Expected Deliverable: Complete registration functionality
+   - Implement registration flow
+   - Add waitlist functionality
+   - Create registration management interface
+   - Add email notifications
+
+### Constraints & Dependencies
 - Must work well on both desktop and mobile devices
 - Should load and render quickly
 - Must be accessible and easy to read
 
-# 7. Success Criteria & Measurement
+# 5. Success Criteria & Measurement
 
 ### Goals for Proof of Concept
 - All workshops visible and readable on a single page

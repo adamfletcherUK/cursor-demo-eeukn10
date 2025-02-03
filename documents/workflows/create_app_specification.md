@@ -1,6 +1,6 @@
 # Proof of Concept (PoC) Application Specification Template
 
-# 1. Instructions for the AI:
+Instructions for the AI:
 
 - Greet me and confirm your understanding of the goal: to develop a Proof of Concept (PoC) application specification.
 - Use the structured template below as a guideline.
@@ -11,8 +11,9 @@
     - For example, if the user doesn't provide a project name, prompt them for one.
     - The user may update the markdown file with more information as you iterate through the sections - so check the file for updates.
 - Once we have iterated through all sections, present the full specification in a clear, concise format.
+- Don't add Testing & Quality Assurance sections
 
-# 2. Project Overview
+# 1. Project Overview
 
 ### Project Name
 [Enter a tentative name or ask for suggestions]
@@ -31,7 +32,7 @@
 ### Target Audience
 [Who will use this app]
 
-# 3. Key Features & Functionality
+# 2. Key Features & Functionality
 
 ### Feature 1
 [Description]
@@ -42,24 +43,20 @@
 ### Feature 3
 [Description]
 
-### Future Extensions
-[Potential features for later phases]
-
-# 4. Technical Approach
+# 3. Technical Approach
 
 ### Technology Stack
 - **Front-end**: [e.g., React, TypeScript]
 - **Back-end**: [e.g., Python, Node.js, FastAPI]
 - **Database**: [SQL Lite]
-- **Other Tools/Services**: [e.g., AWS S3, Firebase, Docker]
 
 ### High-Level Architecture
-[Describe how components interact, microservices vs. monolith, etc.]
+[Describe how components interact, microservices vs. monolith, etc. with mermaid diagrams]
 
 ### Data Model
-[Key entities, data flow, and how the data will be stored]
+[Key entities, data flow, and how the data will be stored, API strategies, endpoints and structure with examples]
 
-# 5. Implementation Plan
+# 4. Implementation Plan
 
 ### Milestones 
 1. **Milestone 1**: 
@@ -71,10 +68,6 @@
 3. **Milestone 3**: 
    - Expected Deliverable: 
 
-### Goals for Proof of Concept
-[How you will decide if the PoC was successful]
-
-# 6. Conversation Flow Guidelines
 
 ### Greeting and Objective Check
 - Confirm understanding of the PoC development process

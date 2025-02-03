@@ -1,4 +1,4 @@
-Read and understand this design specification
+Read and understand the inputted design specification
 
 Convert it into a set of user stories in a markdown file in /pocs
 
