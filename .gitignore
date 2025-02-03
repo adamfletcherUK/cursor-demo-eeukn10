@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+yarn.lock
+package-lock.json
+
+# Testing
+/coverage
+*.lcov
+.nyc_output
+
+# Production
+/build
+/dist
+.next/
+out/
+
+# Development
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.sublime-workspace
+*.sublime-project
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+debug.log
+logs/
+*.log
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+.DS_Store
+Thumbs.db
+.vercel
+.netlify
+
+# Backend specific
+dist/
+build/
+tmp/
+temp/
+
+# Database
+*.sqlite
+*.db
+
+# System Files
+.DS_Store
+Thumbs.db 
+
+/venv
