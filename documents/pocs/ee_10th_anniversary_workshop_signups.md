@@ -1,300 +1,319 @@
-# EE 10th Anniversary Workshop Signups - PoC Specification
+# EE 10th Anniversary Workshop Manager
 
-## 1. Project Overview
+# 1. Project Overview
 
 ### Project Name
-EE 10th Anniversary Workshop Signups
+EE 10th Anniversary Workshop Manager
 
 ### Brief Description
-A platform that enables community members to propose and host workshops, while allowing attendees to discover and sign up for workshops during the EE 10th Anniversary event.
+A web application that facilitates the organization and management of workshops for the EE 10th Anniversary celebration. The platform enables users to both host workshops and sign up to attend workshops, creating a collaborative learning environment.
 
 ### Core Purpose
-To facilitate community-driven workshop creation and attendance management for the EE 10th Anniversary celebration.
+To streamline the workshop organization process for the EE 10th Anniversary by providing a centralized platform for workshop hosts and attendees to connect and manage their participation.
 
 ### Primary Objectives
-1. Enable community members to propose and publish workshops
-2. Provide an easy workshop discovery and signup system for attendees
-3. Manage workshop capacity and schedules
-4. Track attendance and registrations
+1. Enable community members to easily propose and host workshops
+2. Allow participants to discover and register for workshops
+3. Provide a simple, intuitive interface for managing workshop details and attendance
 
 ### Target Audience
-- Workshop Hosts (Community Members)
-- Workshop Attendees
-- Event Administrators
+- Workshop Hosts: Community members who want to share their knowledge
+- Workshop Attendees: Community members interested in learning
+- Event Organizers: Administrators who oversee the workshop program
 
-## 2. Key Features & Functionality
+# 2. Key Features & Functionality
 
-### Workshop Creation
-- Workshop proposal submission form
-- Fields for title, description, capacity, duration, prerequisites
-- Host profile and credentials
-- Time slot preferences
+### Feature 1: Workshop Host Portal
+- Create and manage workshop listings
+- Set workshop capacity, date, time, and location
+- View list of registered attendees with names
+- View current attendance count
+- Update workshop details
 
-### Workshop Discovery & Registration
-- Browsable workshop catalog
-- Search and filter capabilities
-- Automatic waitlist when registration exceeds 20 people
-- No restriction on number of workshops users can join
-- Capacity management
+### Feature 2: Workshop Discovery & Registration
+- Browse available workshops
+- Register for workshops with name
+- View personal workshop schedule
+- Cancel registration if needed
 
-### Management Features
-- Open workshop submission system (no pre-approval required)
-- Schedule management
-- Attendance tracking
-- Email notifications for:
-  - Workshop submission confirmation
-  - Registration confirmation
-  - Waitlist status updates
-  - Schedule changes
+### Feature 3: Basic Workshop Dashboard
+- Overview of all workshops
+- View attendance counts per workshop
+- View attendee names for each workshop
 
-## 3. Technical Approach
+# 3. Technical Approach
 
 ### Technology Stack
-- **Front-end**: React (for interactive UI components)
-- **Back-end**: Node.js with Express
-- **Database**: SQLite (for lightweight, serverless data storage)
-- **Authentication**: Auth0 or similar
-- **Email Service**: SendGrid
+- **Front-end**: React with TypeScript for type safety and better developer experience
+- **Back-end**: Python with FastAPI for rapid development and automatic API documentation
+- **Database**: SQLite for simplicity and ease of setup
 
 ### High-Level Architecture
-- Single page application (SPA) for dynamic user experience
-- RESTful API for data operations
-- File-based SQLite database for simplified deployment
-- Real-time registration counts and waitlist management
-- Event-driven email notifications
-
-[🧠: TEACH]
-SQLite is a great choice for this PoC because:
-1. Zero-configuration required
-2. Self-contained in a single file
-3. No separate server process needed
-4. Perfect for prototypes and small to medium applications
-5. Built-in support in Node.js
-[/🧠: TEACH]
+Simple monolithic architecture with:
+- React frontend for user interface
+- FastAPI backend for business logic and data management
+- SQLite database for data persistence
+- RESTful API communication between frontend and backend
+- No authentication layer required
 
 ### Data Model
-- **Users**
-  - Basic profile info
-  - Workshop hosting/attendance history
-- **Workshops**
-  - Details (title, description, etc.)
-  - Capacity (hard limit at 20)
-  - Schedule information
-- **Registrations**
-  - User-Workshop relationship
-  - Waitlist position (if applicable)
-  - Registration timestamp
+Key entities:
+1. Workshops (title, description, capacity, date, time, location)
+2. Attendees (name, email)
+3. Registrations (linking attendees to workshops)
 
-## 4. Implementation Plan
+# 4. Implementation Plan
 
-### Milestones
+### Milestones 
 
-1. **Foundation Setup** 
-   - Expected Deliverables:
-     - Project repository setup
-     - Basic React app structure
-     - Express server setup
-     - Database schema implementation
-     - Authentication integration
-   - Duration: 5 days
+1. **Project Setup & Basic Structure**: 
+   - Expected Deliverable: Working development environment
+   - Tasks:
+     - Initialize React frontend with TypeScript
+     - Set up FastAPI backend
+     - Configure SQLite database
+     - Create basic project structure
+     - Set up API communication between frontend and backend
 
-   #### User Story 1: Authentication System
-   As a user
-   I want to be able to create an account and log in
-   So that I can access the workshop platform securely
+   User Story:
+   ---
+   As a developer
+   I want to have a properly configured development environment
+   So that I can start building the workshop management application
 
-   Acceptance Criteria:
+   Acceptance Criteria: 
    ```gherkin
-   Scenario: User Registration
-     Given I am on the registration page
-     When I fill in my details and submit
-     Then I should receive a confirmation email
-     And be able to log in with my credentials
+   Scenario: Setting up the frontend environment
+   Given I have Node.js installed
+   When I create a new React TypeScript project
+   Then I should have a working React application with TypeScript support
+   And the necessary dependencies should be installed
 
-   Scenario: User Login
-     Given I am a registered user
-     When I enter my credentials
-     Then I should be logged in
-     And see my personalized dashboard
+   Scenario: Setting up the backend environment
+   Given I have Python installed
+   When I set up a new FastAPI project
+   Then I should have a working API server
+   And the SQLite database should be properly configured
+
+   Scenario: Testing API Communication
+   Given the frontend and backend are running
+   When I make a test API call from the frontend
+   Then I should receive a successful response from the backend
    ```
 
    Technical Design:
-   - Implement Auth0 integration
-   - Create user profile schema
-   - API endpoints:
-     - POST /api/auth/register
-     - POST /api/auth/login
-     - GET /api/auth/profile
+   - Frontend Setup:
+     - Create React app with TypeScript template
+     - Configure ESLint and Prettier
+     - Set up Axios for API communication
+     - Implement basic routing with React Router
+     - Create base component structure
 
-   #### User Story 2: Database Schema
-   As a system administrator
-   I want to have a properly structured database
-   So that workshop and user data can be stored efficiently
+   - Backend Setup:
+     - Initialize FastAPI application
+     - Configure CORS for frontend communication
+     - Set up SQLAlchemy ORM with SQLite
+     - Create database migration system
+     - Implement basic health check endpoint
 
-   Acceptance Criteria:
-   ```gherkin
-   Scenario: Data Storage
-     Given the system is running
-     When data is submitted
-     Then it should be stored in the correct tables
-     And maintain referential integrity
-   ```
+2. **Workshop Management**: 
+   - Expected Deliverable: Ability to create and manage workshops
+   - Tasks:
+     - Create workshop database schema
+     - Implement workshop creation form
+     - Build workshop listing page
+     - Add workshop editing functionality
+     - Create workshop detail view
+     - Implement basic workshop search/filtering
 
-   Technical Design:
-   - SQLite database setup with tables:
-     - users (id INTEGER PRIMARY KEY, email TEXT UNIQUE, name TEXT, created_at TEXT)
-     - workshops (id INTEGER PRIMARY KEY, title TEXT, description TEXT, capacity INTEGER, host_id INTEGER, schedule TEXT, FOREIGN KEY(host_id) REFERENCES users(id))
-     - registrations (id INTEGER PRIMARY KEY, user_id INTEGER, workshop_id INTEGER, status TEXT, position INTEGER, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(workshop_id) REFERENCES workshops(id))
-     - waitlist (id INTEGER PRIMARY KEY, user_id INTEGER, workshop_id INTEGER, position INTEGER, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(workshop_id) REFERENCES workshops(id))
-
-2. **Core Features**
-   - Expected Deliverables:
-     - Workshop creation flow
-     - Workshop listing and search
-     - Basic registration system
-     - Email notification setup
-   - Duration: 10 days
-
-   #### User Story 3: Workshop Creation
+   User Story:
+   ---
    As a workshop host
-   I want to create and publish a workshop
-   So that attendees can discover and register for it
+   I want to create and manage workshop listings
+   So that I can share my knowledge with the community
 
    Acceptance Criteria:
    ```gherkin
-   Scenario: Workshop Submission
-     Given I am logged in as a host
-     When I submit a workshop with required details
-     Then it should appear in the workshop catalog
-     And I should receive a confirmation
+   Scenario: Creating a new workshop
+   Given I am on the workshop creation page
+   When I fill in all required workshop details
+   And I submit the form
+   Then a new workshop should be created
+   And I should see it listed in the workshops page
 
-   Scenario: Workshop Validation
-     Given I am submitting a workshop
-     When I enter invalid details
-     Then I should see appropriate error messages
+   Scenario: Editing workshop details
+   Given I have created a workshop
+   When I edit the workshop details
+   And save the changes
+   Then the workshop should be updated with the new information
+
+   Scenario: Viewing workshop details
+   Given there are workshops in the system
+   When I click on a workshop
+   Then I should see all the workshop details
    ```
 
    Technical Design:
-   - Create workshop submission form
-   - Implement validation logic
-   - API endpoints:
+   - Database Schema:
+     ```sql
+     Workshop:
+       id: UUID
+       title: String
+       description: Text
+       capacity: Integer
+       date: Date
+       time: Time
+       location: String
+       created_at: DateTime
+       updated_at: DateTime
+     ```
+   - API Endpoints:
      - POST /api/workshops
      - GET /api/workshops
+     - GET /api/workshops/{id}
      - PUT /api/workshops/{id}
+     - DELETE /api/workshops/{id}
 
-   #### User Story 4: Workshop Registration
-   As an attendee
-   I want to browse and register for workshops
-   So that I can participate in the event
+3. **Registration System**: 
+   - Expected Deliverable: Complete registration flow
+   - Tasks:
+     - Create attendee and registration database schemas
+     - Build registration form
+     - Implement capacity checking
+     - Add registration confirmation
+     - Create registration cancellation flow
+     - Display attendee list for workshop hosts
 
-   Acceptance Criteria:
-   ```gherkin
-   Scenario: Workshop Registration
-     Given I am logged in
-     When I register for an available workshop
-     Then I should receive a confirmation
-     And see it in my schedule
-
-   Scenario: Capacity Management
-     Given a workshop is at capacity
-     When I try to register
-     Then I should be added to the waitlist
-   ```
-
-   Technical Design:
-   - Implement registration system with capacity checks
-   - Create waitlist management
-   - API endpoints:
-     - POST /api/workshops/{id}/register
-     - GET /api/user/registrations
-     - DELETE /api/workshops/{id}/register
-
-3. **Advanced Features**
-   - Expected Deliverables:
-     - Waitlist functionality
-     - Real-time capacity updates
-     - Email notifications for status changes
-     - User dashboard
-   - Duration: 5 days
-
-   #### User Story 5: Waitlist Management
-   As an attendee
-   I want to join a waitlist for full workshops
-   So that I can potentially attend if spots become available
+   User Story:
+   ---
+   As a workshop attendee
+   I want to register for workshops
+   So that I can participate in learning opportunities
 
    Acceptance Criteria:
    ```gherkin
-   Scenario: Waitlist Position
-     Given I am on a waitlist
-     When I check my status
-     Then I should see my current position
+   Scenario: Registering for a workshop
+   Given I am viewing a workshop with available capacity
+   When I submit my registration details
+   Then I should be registered for the workshop
+   And receive a confirmation
 
-   Scenario: Spot Available
-     Given I am on a waitlist
-     When a spot becomes available
-     Then I should be automatically promoted
-     And receive a notification
+   Scenario: Workshop is at capacity
+   Given a workshop is at full capacity
+   When I try to register
+   Then I should see a notification that registration is full
+
+   Scenario: Canceling registration
+   Given I am registered for a workshop
+   When I cancel my registration
+   Then my spot should be freed up
+   And the workshop capacity should be updated
    ```
 
    Technical Design:
-   - Implement waitlist queue system
-   - Create automated waitlist promotion
-   - API endpoints:
-     - POST /api/workshops/{id}/waitlist
-     - GET /api/workshops/{id}/waitlist-position
+   - Database Schema:
+     ```sql
+     Attendee:
+       id: UUID
+       name: String
+       email: String
+       created_at: DateTime
 
-4. **Testing & Polish**
-   - Expected Deliverables:
-     - User acceptance testing
-     - Bug fixes
-     - Performance optimization
-     - Documentation
-   - Duration: 5 days
+     Registration:
+       id: UUID
+       workshop_id: UUID (foreign key)
+       attendee_id: UUID (foreign key)
+       registration_date: DateTime
+       status: String (enum: confirmed, cancelled)
+     ```
+   - API Endpoints:
+     - POST /api/registrations
+     - GET /api/workshops/{id}/registrations
+     - DELETE /api/registrations/{id}
+     - GET /api/attendees/{id}/workshops
 
-   #### User Story 6: System Testing
-   As a system administrator
-   I want to ensure the platform works under load
-   So that users have a smooth experience during the event
+4. **Dashboard & Reporting**: 
+   - Expected Deliverable: Workshop overview and attendance tracking
+   - Tasks:
+     - Create workshop overview page
+     - Implement attendance counters
+     - Build attendee list views
+     - Add basic search/filter for workshops
+     - Create simple CSV export for attendee lists
+
+   User Story:
+   ---
+   As a workshop organizer
+   I want to view workshop statistics and attendance information
+   So that I can track participation and manage the program effectively
 
    Acceptance Criteria:
    ```gherkin
-   Scenario: Concurrent registrations
-     Given multiple users are registering simultaneously
-     When they submit registrations
-     Then the system should handle requests correctly
-     And maintain data consistency
+   Scenario: Viewing workshop overview
+   Given there are workshops in the system
+   When I access the dashboard
+   Then I should see a summary of all workshops
+   And their current registration counts
+
+   Scenario: Exporting attendee list
+   Given a workshop has registrations
+   When I request to export the attendee list
+   Then I should receive a CSV file
+   With all attendee information
+
+   Scenario: Filtering workshops
+   Given there are multiple workshops
+   When I use the search/filter options
+   Then I should see only workshops matching my criteria
    ```
 
    Technical Design:
-   - Implement end-to-end testing suite
-   - Set up load testing scenarios
-   - Create monitoring dashboard
-   - Document API endpoints and error handling
+   - API Endpoints:
+     - GET /api/dashboard/stats
+     - GET /api/workshops/{id}/export
+     - GET /api/workshops/search
+   - Dashboard Components:
+     - Workshop overview grid
+     - Registration statistics charts
+     - Search and filter controls
+     - Export functionality
 
-## 5. Risk Assessment & Constraints
+### Development Approach
+- Start with backend API development for each milestone
+- Follow with frontend implementation
+- Add logging throughout for debugging
+- Focus on simple, functional UI components
+- Regular testing of end-to-end flows
+
+### Testing Strategy
+- Manual testing of core flows
+- Console-based debugging
+- Basic integration tests for critical paths
+- User acceptance testing for core features
+
+# 5. Risk Assessment & Constraints
 
 ### Potential Risks
+1. **Peak Registration Load**: 
+   - Mitigation Strategy: Implement registration queuing if needed
 
-1. **High Concurrent Users**:
-   - Mitigation: Implement request queuing and rate limiting
-   
-2. **Email Delivery Issues**:
-   - Mitigation: Add retry logic and delivery status tracking
-
-3. **Double Bookings**:
-   - Mitigation: Implement transaction locks for registrations
+2. **Date/Time Conflicts**: 
+   - Mitigation Strategy: Add validation and visual indicators for scheduling conflicts
 
 ### Constraints
+- No authentication required - simple name-based registration
+- Limited to basic workshop management features
+- Focus on core functionality over advanced features
 
-- Must handle concurrent workshop registrations (using SQLite's WAL mode for better concurrency)
-- Email service limited to 100 emails/day on free tier
-- Mobile-responsive design required
-- Must work across major browsers
-- SQLite file size should not exceed 1GB
-
-## 6. Success Criteria
+# 6. Success Criteria & Measurement
 
 ### Key Performance Indicators (KPIs)
-1. Workshop submission success rate > 95%
-2. Registration system uptime > 99%
-3. Email notification delivery rate > 95%
+1. Number of workshops successfully created
+2. Number of successful registrations
+3. User satisfaction with the registration process
+
+### Goals for Proof of Concept
+- Demonstrate end-to-end workshop creation and registration flow
+- Show accurate attendance tracking and reporting
+- Validate the basic user experience for both hosts and attendees
+- Confirm technical feasibility of the core features 
