@@ -1,0 +1,102 @@
+---
+description: General Purpose Coding
+globs: '.py', '.ts', '.tsx', '.md'
+---
+# Quick Proof-of-Concept AI Code Generation
+
+## Core Principles
+1. Speed over perfection - get to learning outcomes quickly
+2. Readability over optimization
+3. Heavy debugging and logging for AI analysis
+4. Documentation as you go
+
+## Languages & Tools
+- **Python**: Use for backend, data processing, or CLI proofs
+- **TypeScript/React**: Use for UI/frontend proofs
+- Stick to standard libraries when possible
+- Minimize external dependencies
+
+## Development Standards
+### Code Structure
+- Keep files under 100 lines
+- One concept per file
+- Maximum function length: 20 lines
+- Avoid inheritance or complex patterns
+
+### Debugging
+- Every function must have at least one debug statement
+- Python: Use logging with consistent format:
+  ```python
+  logging.debug(f"[FunctionName] Input: {input_var}, State: {state_var}")
+  ```
+- TypeScript: Use labeled console.debug:
+  ```typescript
+  console.debug('[ComponentName]', { props, state });
+  ```
+
+### Documentation
+- Every file starts with purpose and usage example
+- Every function has:
+  - Input/output description
+  - Usage example
+  - Expected behavior
+- Add TODO comments for future improvements
+- Document limitations and assumptions
+
+### Testing
+- Console-based test cases at bottom of file
+- Include sample inputs and expected outputs
+- Add debug prints in test cases
+
+### Error Handling
+- Use simple try/except or try/catch blocks
+- Log all errors with context
+- Fail fast and visibly
+
+## Implementation Process
+1. Document the concept first
+2. Write usage example
+3. Implement minimal version
+4. Add debug statements
+5. Add basic tests
+6. Document learnings
+
+## Learning Documentation
+- Create README.md for each POC with:
+  - Purpose
+  - Key learnings
+  - Limitations found
+  - Next steps
+
+## Key Development Rules
+1. Keep setup to a minimum for fast iteration. Avoid heavy configuration.
+2. Code must be straightforward, well commented, and easy to interpret.
+3. Add ample debug statements for AI debugging (e.g., `console.debug`, `print`, or logging).
+4. Document your thought process, assumptions, and intended usage. 
+5. The goal is to learn about functionality, not to produce production-level code.
+
+## Code Standards
+- Write clear, self-explanatory code.
+- Provide inline and block comments describing logic and purpose.
+- Use docstrings (Python) or JSDoc (TypeScript) to document functions, classes, and modules.
+- When using React, keep components minimal and focus on concept demonstration.
+- Avoid complex patterns or frameworks unless necessary for proof of concept.
+
+## Testing & Verification
+- Basic console or print-based tests are sufficient.
+- Prioritize demonstrating functionality over rigorous test coverage.
+- Provide manual QA steps or brief test scripts if relevant.
+
+## Version Control & Commits
+- Commits may be small and frequent to capture learning moments.
+- Keep commit messages descriptive of what was learned or changed (e.g., `feat: add basic user input form for POC`).
+- No need for conventional commit prefixes unless it helps organize your proofs of concept.
+
+## Security & Secrets
+- No secrets or sensitive data should be hardcoded.
+- Be mindful of any external API usage and sanitize inputs if relevant.
+- Since code is throwaway, security is secondary to learning—but avoid bad practices that could cause confusion.
+
+## Notes
+- Focus on quickly validating ideas.
+- These are not production-grade standards; everything is geared toward rapid learning and simplicity.
