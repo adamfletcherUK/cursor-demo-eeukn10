@@ -52,15 +52,25 @@ To facilitate community-driven workshop creation and attendance management for t
 ### Technology Stack
 - **Front-end**: React (for interactive UI components)
 - **Back-end**: Node.js with Express
-- **Database**: PostgreSQL (for relational data like users, workshops, registrations)
+- **Database**: SQLite (for lightweight, serverless data storage)
 - **Authentication**: Auth0 or similar
 - **Email Service**: SendGrid
 
 ### High-Level Architecture
 - Single page application (SPA) for dynamic user experience
 - RESTful API for data operations
+- File-based SQLite database for simplified deployment
 - Real-time registration counts and waitlist management
 - Event-driven email notifications
+
+[🧠: TEACH]
+SQLite is a great choice for this PoC because:
+1. Zero-configuration required
+2. Self-contained in a single file
+3. No separate server process needed
+4. Perfect for prototypes and small to medium applications
+5. Built-in support in Node.js
+[/🧠: TEACH]
 
 ### Data Model
 - **Users**
@@ -131,11 +141,11 @@ To facilitate community-driven workshop creation and attendance management for t
    ```
 
    Technical Design:
-   - PostgreSQL schema with tables:
-     - users (id, email, name, created_at)
-     - workshops (id, title, description, capacity, host_id, schedule)
-     - registrations (id, user_id, workshop_id, status, position)
-     - waitlist (id, user_id, workshop_id, position)
+   - SQLite database setup with tables:
+     - users (id INTEGER PRIMARY KEY, email TEXT UNIQUE, name TEXT, created_at TEXT)
+     - workshops (id INTEGER PRIMARY KEY, title TEXT, description TEXT, capacity INTEGER, host_id INTEGER, schedule TEXT, FOREIGN KEY(host_id) REFERENCES users(id))
+     - registrations (id INTEGER PRIMARY KEY, user_id INTEGER, workshop_id INTEGER, status TEXT, position INTEGER, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(workshop_id) REFERENCES workshops(id))
+     - waitlist (id INTEGER PRIMARY KEY, user_id INTEGER, workshop_id INTEGER, position INTEGER, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(workshop_id) REFERENCES workshops(id))
 
 2. **Core Features**
    - Expected Deliverables:
@@ -276,10 +286,11 @@ To facilitate community-driven workshop creation and attendance management for t
 
 ### Constraints
 
-- Must handle concurrent workshop registrations
+- Must handle concurrent workshop registrations (using SQLite's WAL mode for better concurrency)
 - Email service limited to 100 emails/day on free tier
 - Mobile-responsive design required
 - Must work across major browsers
+- SQLite file size should not exceed 1GB
 
 ## 6. Success Criteria
 
