@@ -1,4 +1,12 @@
-Please analyze the inputted PRD doc and implement the 'Specified Functional Requirements' as follows:
+
+Read and implent the specified functional requirements in the PRD doc.
+
+Go step by step and verify everything is working before proceeding.
+
+Log your progress in a markdown file in /progress
+
+
+Implement the specified functional requirements as follows:
 
 1. First, outline your understanding of:
    - The specific requirements from this story

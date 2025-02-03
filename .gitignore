@@ -69,3 +69,7 @@ temp/
 Thumbs.db 
 
 /venv
+
+# SQLite
+*.sqlite
+*.sqlite3
