@@ -61,7 +61,7 @@ To provide a clear, comprehensive overview of all workshops available during the
 # 4. Technical Approach
 
 ### Technology Stack
-- **Front-end**: React with TypeScript, TailwindCSS for styling
+- **Front-end**: React with TypeScript
 - **Back-end**: FastAPI (Python)
 - **Database**: SQLite (for simplicity in PoC phase)
 

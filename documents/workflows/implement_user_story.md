@@ -1,6 +1,8 @@
 
 Please analyze the specified user story in the supplied file and implement the 'Technical Design' as follows:
 
+Log your progress by creating and amending a markdown file in /progress
+
 1. First, outline your understanding of:
    - The specific requirements from this story
    - How this feature integrates with existing functionality
