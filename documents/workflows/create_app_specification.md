@@ -48,9 +48,9 @@
 # 4. Technical Approach
 
 ### Technology Stack
-- **Front-end**: [e.g., React, Vue, or Angular]
-- **Back-end**: [e.g., Node.js, Django, or Laravel]
-- **Database**: [SQL/NoSQL]
+- **Front-end**: [e.g., React, TypeScript]
+- **Back-end**: [e.g., Python, Node.js, FastAPI]
+- **Database**: [SQL Lite]
 - **Other Tools/Services**: [e.g., AWS S3, Firebase, Docker]
 
 ### High-Level Architecture
